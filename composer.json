@@ -1,0 +1,39 @@
+{
+    "name": "webpatser/laravel-apm-agent",
+    "description": "Laravel agent for Elastic's APM API",
+    "keywords": [
+        "elastic",
+        "laravel",
+        "apm"
+    ],
+    "type": "library",
+    "require": {
+        "ext-json": "*",
+        "illuminate/support":"^6.0",
+        "guzzlehttp/guzzle": "^6.3",
+        "opis/json-schema": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Webpatser\\LaravelApmAgent\\": "src/"
+        }
+    },
+    "extra":{
+        "laravel":{
+            "providers":[
+                "Webpatser\\LaravelApmAgent\\Providers\\LaravelApmAgentServiceProvider"
+            ],
+            "aliases":{
+                "APM": "Webpatser\\LaravelApmAgent\\Facades\\LaravelApmAgent"
+            }
+        }
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Christoph Kempen",
+            "email": "christoph@downsized.nl"
+        }
+    ],
+    "minimum-stability": "dev"
+}
