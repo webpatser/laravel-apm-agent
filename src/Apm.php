@@ -19,11 +19,13 @@ class Apm
 
     public function __construct()
     {
-        Event::listen(RequestHandled::class, [$this, 'recordRequest']);
-        Event::listen('bootstrapped: *', [$this, 'bootstrapped']);
+        if (config(APM_ACTIVE, false)) {
+            Event::listen(RequestHandled::class, [$this, 'recordRequest']);
+            Event::listen('bootstrapped: *', [$this, 'bootstrapped']);
 
-        $this->apm[] = new Metadata();
-        $this->apm[] = new Transaction();
+            $this->apm[] = new Metadata();
+            $this->apm[] = new Transaction();
+        }
 
 //        $schema = Schema::import('https://raw.githubusercontent.com/webpatser/apm-server/master/docs/spec/metadata.json');
 //
