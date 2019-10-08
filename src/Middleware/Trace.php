@@ -39,7 +39,9 @@ class Trace
      */
     public function terminate($request, $response)
     {
-        //$this->agent->endMain();
-        $this->agent->send();
+        if (config('APM_ACTIVE', false)) {
+            //$this->agent->endMain();
+            $this->agent->send();
+        }
     }
 }
