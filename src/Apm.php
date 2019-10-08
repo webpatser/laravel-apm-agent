@@ -19,7 +19,7 @@ class Apm
 
     public function __construct()
     {
-        if (config(APM_ACTIVE, false)) {
+        if (config('APM_ACTIVE', false)) {
             Event::listen(RequestHandled::class, [$this, 'recordRequest']);
             Event::listen('bootstrapped: *', [$this, 'bootstrapped']);
 
